@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "sweetalert2@11.10.5",
+      "destination": "wwwroot/js/sweetalert2/"
+    }
+  ,
+{
+  "provider": "cdnjs",
+  "library": "jquery@3.7.1",
+  "destination": "wwwroot/lib/"
+}
+,
+{
+  "provider": "cdnjs",
+  "library": "bootstrap@5.3.3",
+  "destination": "wwwroot/bootstrap/"
+}
+,
+{
+  "provider": "cdnjs",
+  "library": "jquery@3.7.1",
+  "destination": "wwwroot/lib/jquery/"
+}
+,
+{
+  "provider": "cdnjs",
+  "library": "bootstrap@5.3.3",
+  "destination": "wwwroot/lib/bootstrap/"
+}
+,
+{
+  "provider": "cdnjs",
+  "library": "jqueryui@1.13.2",
+  "destination": "wwwroot/lib/jquery/jqueryui/",
+  "files": [
+    "jquery-ui.min.js",
+    "jquery-ui.js"
+  ]
+}
+,
+{
+  "provider": "cdnjs",
+  "library": "microsoft-signalr@8.0.0",
+  "destination": "wwwroot/lib/microsoft-signalr/"
+}
+,
+{
+  "provider": "cdnjs",
+  "library": "jquery-validation-unobtrusive@4.0.0",
+  "destination": "wwwroot/jquery-validation-unobtrusive/"
+}
+]
+}

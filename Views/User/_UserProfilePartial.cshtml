@@ -1,0 +1,23 @@
+﻿@using Comment_Post.ViewModels
+@model UserProfileViewModel
+
+<h2>Update Profile</h2>
+
+<div class="form-group">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" class="form-control" />
+</div>
+
+<div class="form-group">
+    <label asp-for="Password"></label>
+    <input asp-for="Password" type="password" class="form-control" />
+</div>
+
+<div class="form-group">
+    <label asp-for="Address"></label>
+    <input asp-for="Address" class="form-control" />
+</div>
+
+<!-- Add other fields as needed -->
+
+<button id="updateProfileBtn" class="btn btn-primary">Update Profile</button>

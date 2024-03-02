@@ -1,0 +1,48 @@
+﻿@using Comment_Post.ViewModels
+<ul class="navbar-nav">
+    @if (Context.User.Identity.IsAuthenticated)
+    {
+        <li class="nav-item">
+            <a id="updateProfileLink" class="nav-link text-dark" asp-controller="Home" asp-action="Index" title="Manage">Hello @User.Identity?.Name!</a>
+        </li>
+        <div id="updateProfileContainer">
+              @Html.Partial("_UserProfilePartial.cshtml", new UserProfileViewModel())
+
+        </div>
+        <li class="nav-item">
+          
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
+        </li>
+    }
+</ul>
+
+<script>
+    $(document).ready(function () {
+        // Handle update profile button click
+        $("#updateProfileLink").on("click", function (e) {
+            e.preventDefault(); // Prevent the default behavior of the link
+            // Fetch the partial view and show it in a Swal.fire popup
+            $.get("/Account/UpdateProfile", function (data) {
+                Swal.fire({
+                    title: 'Update Profile',
+                    html: data,
+                    showCancelButton: true,
+                    confirmButtonText: 'Update',
+                }).then(function (result) {
+                    // Handle the update profile form submission if needed
+                    if (result.isConfirmed) {
+                        // Perform any necessary actions
+                    }
+                });
+            });
+        });
+    });
+</script>

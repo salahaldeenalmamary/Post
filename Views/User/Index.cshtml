@@ -1,0 +1,59 @@
+﻿<!-- Views/User/Index.cshtml -->
+
+@{
+    ViewData["Title"] = "User List";
+}
+
+<h2>User List</h2>
+
+<div id="usersWithPostsEF">
+    <!-- Display EF results here -->
+</div>
+
+<div id="usersWithPostsDapper">
+    <!-- Display Dapper results here -->
+</div>
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Call the controller action using AJAX
+            $.ajax({
+                url: '@Url.Action("GetUsersWithPosts", "User")', // Replace with your actual action and controller names
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                   
+
+                    $('#usersWithPostsEF').html(renderUserList(data.usersWithPostsEF));
+
+                    // Update the Dapper results
+                    $('#usersWithPostsDapper').html(renderUserList(data.usersWithPostsDapper));
+                },
+                error: function (error) {
+                    console.error('Error fetching data:', error);
+                }
+            });
+        });
+
+       function renderUserList(users) {
+    // Function to render the user list HTML in table form
+    var userListHtml = '<table>';
+    userListHtml += '<thead><tr><th>Name</th><th>Email</th></tr></thead>';
+    userListHtml += '<tbody>';
+    
+    for (var i = 0; i < users.length; i++) {
+        userListHtml += '<tr>';
+        userListHtml += '<td>' + users[i].userName + '</td>';
+        userListHtml += '<td>' + users[i].email + '</td>';  // Assuming 'email' is the property name
+        userListHtml += '</tr>';
+    }
+
+    userListHtml += '</tbody></table>';
+    return userListHtml;
+}
+
+    </script>
+}
